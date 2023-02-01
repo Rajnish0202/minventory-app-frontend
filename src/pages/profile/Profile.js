@@ -6,7 +6,7 @@ import { SpinnerImg } from '../../components/loader/Loader';
 import './Profile.scss';
 
 const Profile = () => {
-  const { loading, user, error } = useSelector((state) => state.user);
+  const { loading, user } = useSelector((state) => state.user);
 
   return (
     <div className='profile --my2'>

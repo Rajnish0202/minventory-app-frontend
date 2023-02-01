@@ -23,7 +23,9 @@ import { BACKEND_URL } from './userAction';
 export const getAllProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCT_REQUEST });
-    const { data } = await axios.get(`${BACKEND_URL}/api/products`);
+    const { data } = await axios.get(`${BACKEND_URL}/api/products`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: ALL_PRODUCT_SUCCESS, payload: data });
   } catch (error) {
