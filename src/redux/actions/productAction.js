@@ -36,7 +36,7 @@ export const createProduct = (productData) => async (dispatch) => {
     dispatch({ type: CREATE_PRODUCT_REQUEST });
 
     const config = {
-      headers: { 'Cntent-Type': 'multiform/form-data' },
+      headers: { 'Content-Type': 'multiform/form-data' },
     };
 
     const { data } = await axios.post(
@@ -81,7 +81,7 @@ export const productUpdate = (id, productData) => async (dispatch) => {
     dispatch({ type: PRODUCT_UPDATE_REQUEST });
 
     const config = {
-      headers: { 'Cntent-Type': 'multiform/form-data' },
+      headers: { 'Content-Type': 'multiform/form-data' },
     };
 
     const { data } = await axios.patch(

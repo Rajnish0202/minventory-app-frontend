@@ -22,7 +22,7 @@ import Profile from './pages/profile/Profile';
 import EditProfile from './pages/profile/EditProfile';
 import Contact from './pages/contact/Contact';
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function App() {
   const { isLoggedIn, user } = useSelector((state) => state.user);
