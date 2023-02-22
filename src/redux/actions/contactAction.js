@@ -9,16 +9,20 @@ import {
 import { BACKEND_URL } from './userAction';
 
 export const contactSupport = (contactData) => async (dispatch) => {
-  console.log(contactData);
   try {
     dispatch({ type: CONTACT_US_REQUEST });
 
-    const config = { headers: { 'Content-Type': 'application/json' } };
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+    };
 
     const { data } = await axios.post(
       `${BACKEND_URL}/api/contactUs`,
       contactData,
-      config
+      config,
+      {
+        withCredentials: true,
+      }
     );
 
     dispatch({ type: CONTACT_US_SUCCESS, payload: data });

@@ -44,7 +44,10 @@ export const createProduct = (productData) => async (dispatch) => {
     const { data } = await axios.post(
       `${BACKEND_URL}/api/products`,
       productData,
-      config
+      config,
+      {
+        withCredentials: true,
+      }
     );
 
     dispatch({ type: CREATE_PRODUCT_SUCCESS, payload: data });
@@ -60,7 +63,9 @@ export const createProduct = (productData) => async (dispatch) => {
 export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-    const { data } = await axios.delete(`${BACKEND_URL}/api/products/${id}`);
+    const { data } = await axios.delete(`${BACKEND_URL}/api/products/${id}`, {
+      withCredentials: true,
+    });
     dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: data.success });
     toast.success(data.message);
   } catch (error) {
@@ -71,7 +76,9 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const productDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`${BACKEND_URL}/api/products/${id}`);
+    const { data } = await axios.get(`${BACKEND_URL}/api/products/${id}`, {
+      withCredentials: true,
+    });
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.respone.data.error });
@@ -89,7 +96,10 @@ export const productUpdate = (id, productData) => async (dispatch) => {
     const { data } = await axios.patch(
       `${BACKEND_URL}/api/products/${id}`,
       productData,
-      config
+      config,
+      {
+        withCredentials: true,
+      }
     );
 
     dispatch({ type: PRODUCT_UPDATE_SUCCESS, payload: data.success });
